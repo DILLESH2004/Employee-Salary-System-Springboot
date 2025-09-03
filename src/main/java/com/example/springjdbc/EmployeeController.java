@@ -49,7 +49,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/role/{role}")
-    public List<Employee> byRole(@PathVariable String role) {
+    public List<Employee> byRole(@PathVariable("role") String role) {
         return service.byRole(role);
     }
 
