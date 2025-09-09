@@ -1,6 +1,5 @@
 # Employee Salary System (Spring Boot + PostgreSQL)
 
-Generated on 2025-09-02.
 
 ## How to run
 

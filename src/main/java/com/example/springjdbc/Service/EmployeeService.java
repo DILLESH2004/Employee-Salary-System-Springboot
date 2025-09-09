@@ -20,7 +20,6 @@ public class EmployeeService {
         this.repository = repository;
     }
 
-    @Transactional
     public Employee create(Employee e) {
         return repository.save(e);
     }
