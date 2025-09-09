@@ -1,9 +1,16 @@
 package com.example.springjdbc;
 
+import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -21,13 +28,13 @@ public class EmployeeService {
     }
 
     public Employee update(Long id, Employee e) {
-        Employee existing = repository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Employee not found: " + id));
-        existing.setName(e.getName());
-        existing.setRole(e.getRole());
-        existing.setSalary(e.getSalary());
-        existing.setHireDate(e.getHireDate());
-        return repository.save(existing);
+           Employee existing = repository.findById(id)
+                   .orElseThrow(() -> new EmployeeNotFound("Employee not found: " + id));
+           existing.setName(e.getName());
+           existing.setRole(e.getRole());
+           existing.setSalary(e.getSalary());
+           existing.setHireDate(e.getHireDate());
+           return repository.save(existing);
     }
 
     public void delete(Long id) {
@@ -35,8 +42,8 @@ public class EmployeeService {
     }
 
     public Employee get(Long id) {
-        return repository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Employee not found: " + id));
+      return repository.findById(id)
+              .orElseThrow(()->new EmployeeNotFound("Employee not found : "+id));
     }
 
     public List<Employee> getAll() {
@@ -52,4 +59,6 @@ public class EmployeeService {
                 .mapToDouble(e -> e.getSalary() == null ? 0.0 : e.getSalary())
                 .sum();
     }
+
+
 }
