@@ -1,13 +1,13 @@
-package com.example.springjdbc;
+package com.example.springjdbc.Controller;
 
+import com.example.springjdbc.Entity.Employee;
+import com.example.springjdbc.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,9 +63,5 @@ public class EmployeeController {
         result.put("totalPayroll", service.totalPayroll());
         return result;
     }
-    @ExceptionHandler(EmployeeNotFound.class)
-    public ResponseEntity<?> HandleEmployeeNotFoundException(EmployeeNotFound e){
-        ErrorResponse error =  new ErrorResponse(LocalDateTime.now(),"Employee Not Found Exception","Employee not found");
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    }
+
 }

@@ -1,5 +1,6 @@
-package com.example.springjdbc;
+package com.example.springjdbc.Repository;
 
+import com.example.springjdbc.Entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.springjdbc;
+package com.example.springjdbc.Entity;
 
 
 import java.time.LocalDateTime;

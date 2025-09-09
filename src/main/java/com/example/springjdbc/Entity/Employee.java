@@ -1,4 +1,4 @@
-package com.example.springjdbc;
+package com.example.springjdbc.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
